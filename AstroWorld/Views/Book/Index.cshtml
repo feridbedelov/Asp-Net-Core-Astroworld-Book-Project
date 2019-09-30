@@ -1,0 +1,65 @@
+﻿@model GetBooksViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+    <div class="row">
+        <div class="col-md-2">
+
+            @await Component.InvokeAsync("CategoryList") 
+
+
+        </div>
+
+        
+        
+        <div class="col-md-7">
+
+            @if (Model.Books.Any())
+            {
+                @foreach (var item in Model.Books)
+                {
+
+                    <div class="jumbotron">
+
+                        <a asp-controller="Book" asp-action="GetBookByUser" asp-route-id="@item.User.Id" class="mr-1">@item.User.UserName</a>
+                        <br>
+                        <small class="text-muted">Created At : @item.CreatedAt </small>
+                        <h1 class="display-4"> @item.Name</h1>
+                        <p>Author :  @item.Author</p>
+
+                        <hr class="my-2">
+                        
+                        <p>Category : <a asp-controller="Book" asp-action="GetBookByCategory" asp-route-id="@item.Category.Id" class="mr-1">  @item.Category.Name</a></p>
+                        @if (item.Draft==true)
+	                     {
+                        <p class="alert alert-info">This has not been published yet!</p>
+		 
+	                     }
+                        <a class="btn btn-primary btn-sm" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id" role="button">Learn more</a>
+
+                    </div>
+
+                }
+            }
+            else
+            {
+
+                <a asp-controller="Book" asp-action="Create" class="btn btn-outline-success" >Create New Book</a>
+            }
+
+
+
+
+        </div>
+        
+        
+        
+        <div class="col-md-3">
+
+            @await Component.InvokeAsync("RandomPost")
+
+        </div>
+    </div>

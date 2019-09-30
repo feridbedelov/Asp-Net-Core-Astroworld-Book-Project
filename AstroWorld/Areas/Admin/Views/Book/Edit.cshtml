@@ -1,0 +1,103 @@
+﻿@model BookUpdateViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+
+
+
+<div class="row">
+
+
+
+    <div class="col-4">
+        <h3 class="m-3">
+            Edit Book
+        </h3>
+
+        <form method="Post">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="BookId"/>
+            <div class="form-group ">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Author"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ReleaseYear"></label>
+                <input asp-for="ReleaseYear" class="form-control" />
+                <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserId"></label>
+                <select asp-for="UserId" asp-items="@Model.UsersList" class="form-control">
+                    <option>
+                        Select an user
+                    </option>
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" asp-items="@Model.CategoriesList" class="form-control">
+                    <option>
+                        Select a category
+                    </option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Draft?
+                    <input type="checkbox" style="width:15px" asp-for="Draft" class="form-control" />
+                </label>
+
+                <span asp-validation-for="Draft" class="text-danger"></span>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    <a class="ml-2" asp-action="Index" asp-controller="Book" asp-area="Admin">Back To List</a>
+                </small>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-4">
+
+    </div>
+</div>
+
+
+
+
+
+
+
+

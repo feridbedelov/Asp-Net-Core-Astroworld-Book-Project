@@ -1,0 +1,45 @@
+﻿@model GetWishlistViewModel
+@{
+    ViewData["Title"] = "GetWishlistOfCurrentUser";
+}
+
+
+<br />
+<div class="row">
+    <div class="col-md-2">
+
+        
+
+
+    </div>
+
+
+
+    <div class="col-md-7">
+
+
+        @foreach (var item in Model.WishLists)
+        {
+
+            <div class="jumbotron">
+
+                <a asp-controller="Book" asp-action="GetBookByUser" asp-route-id="@item.User.Id" class="mr-1">@item.User.UserName</a>
+                <br>
+                <small class="text-muted">Created At : @item.Book.CreatedAt </small>
+                <h1 class="display-4"> @item.Book.Name</h1>
+                <p>Author :  @item.Book.Author</p>
+
+                <hr class="my-2">
+                <p>Category : <a asp-controller="Book" asp-action="GetBookByCategory" asp-route-id="@item.Book.Category.Id" class="mr-1">  @item.Book.Category.Name</a></p>
+
+                <a class="btn btn-primary btn-sm" asp-controller="Book" asp-action="Details" asp-route-id="@item.Book.Id" role="button">Learn more</a>
+               
+            </div>
+
+        }
+    </div>
+
+
+
+    <div class="col-md-3"></div>
+</div>

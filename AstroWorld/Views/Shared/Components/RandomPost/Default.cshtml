@@ -1,0 +1,21 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Default";
+}
+
+<h4 class="alert alert-success">Random Book</h4>
+
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <h6 class="card-subtitle mb-2 text-muted"> Author : @Model.Author </h6>
+            <p class="card-text">Release Year : @Model.ReleaseYear.Year </p>
+            <a asp-action="Details" asp-controller="Book" asp-route-id="@Model.Id" class="card-link">Learn More</a>
+
+        </div>
+    </div>
+    <br />
+
+
+
