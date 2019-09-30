@@ -21,7 +21,7 @@
         @Model.Description
     </p>
     <p>
-        Release Year :@Model.ReleaseYear
+        Release Year :@Model.ReleaseYear.Year
     </p>
     <hr class="my-2">
     <p>Category : <a asp-controller="Book" asp-action="GetBookByCategory" asp-route-id="@Model.Category.Id" class="mr-1">  @Model.Category.Name</a></p>
